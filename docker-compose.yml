@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  spring-boot-app:
+    build:
+      context: ./spring-boot/demo
+      dockerfile: Dockerfile
+    ports:
+      - "9595:9595"
+    volumes:
+      - ./spring-boot/demo:/app
+    depends_on:
+      - mysql
+
+  vuejs-app:
+    build:
+      context: ./vue/demo
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    ports:
+      - "3310:3306"
+
+volumes:
+  mysql_data:
+    driver: local
