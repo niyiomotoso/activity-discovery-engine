@@ -5,8 +5,8 @@ export const getActivities = async (keyword: string) => {
             Accept: 'application/json',
             'Content-Type': 'application/json',
         },
-    }).then((response) => {
-        return {'status': true, data: response.json()};
+    }).then(async (response) => {
+        return {status: true, data: await response.json()};
     }).catch((error) => {
         return  {status: false, message: error.message ?? 'an error occurred'};
     });

@@ -1,6 +1,8 @@
 # Use the official Node.js 16 image as the base image
 FROM node:16-alpine
 
+RUN apk update && apk add python3
+
 # Set the working directory inside the container
 WORKDIR /app
 # Copy the rest of the app's source code

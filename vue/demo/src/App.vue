@@ -14,16 +14,17 @@ export default {
         };
     },
     async mounted() {
-        const result = getActivities('');
+        const result = await getActivities('');
+        console.log(result)
         if (result.status) {
             this.activities = result.data;
         }
     },
     methods: {
-        onSubmit: function() {
-            const result = getActivities(this.searchTerm);
+        onSubmit: async function () {
+            const result = await getActivities(this.searchTerm);
+            console.log(result)
             if (result.status) {
-                console.log(result.data)
                 this.activities = result.data;
             }
         }
