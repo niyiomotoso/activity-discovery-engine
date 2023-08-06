@@ -2,6 +2,7 @@ package com.getyourguide.demo;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.getyourguide.demo.model.Activity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -38,17 +39,15 @@ public class ActivityController {
     @GetMapping("/activities")
     public ResponseEntity<List<Activity>> activities() {
         List<Activity> activities = null;
-        try {
+       // try {
             //create ObjectMapper instance
             ObjectMapper objectMapper = new ObjectMapper();
             //read JSON file and convert to a list of activities
-            var file = resourceLoader.getResource("classpath:static/activities.json").getFile();
-            activities = objectMapper.readValue(file, new TypeReference<List<Activity>>() {
-            });
+            activities = new ArrayList<>();
 
             return ResponseEntity.ok(activities);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+       //  } catch (IOException e) {
+      //      throw new RuntimeException(e);
+      //  }
     }
 }
