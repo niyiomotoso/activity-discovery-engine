@@ -1,53 +1,31 @@
-package com.getyourguide.demo;
+package com.getyourguide.demo.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.getyourguide.demo.model.Activity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
+import com.getyourguide.demo.projections.ActivityListing;
+import com.getyourguide.demo.service.ActivityService;
+import com.getyourguide.demo.workers.publisher.impl.FileDataPublisher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ActivityController {
-    @Autowired
-    private ResourceLoader resourceLoader;
+    private ActivityService activityService;
+    private FileDataPublisher fileDataPublisher;
 
-    @GetMapping("/debug")
-    public void debug(@RequestParam(name = "title", required = false, defaultValue = "NONE") String title, Model model) {
-        try {
-            model.addAttribute("title", title);
-            //create ObjectMapper instance
-            ObjectMapper objectMapper = new ObjectMapper();
-            //read JSON file and convert to a list of activities
-            var file = resourceLoader.getResource("classpath:static/activities.json").getFile();
-            var activities = objectMapper.readValue(file, new TypeReference<List<Activity>>() {
-            });
-            model.addAttribute("activities", activities);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    ActivityController(ActivityService activityService, FileDataPublisher fileDataPublisher) {
+        this.activityService = activityService;
+        this.fileDataPublisher = fileDataPublisher;
     }
-    @GetMapping("/activities")
-    public ResponseEntity<List<Activity>> activities() {
-        List<Activity> activities = null;
-       // try {
-            //create ObjectMapper instance
-            ObjectMapper objectMapper = new ObjectMapper();
-            //read JSON file and convert to a list of activities
-            activities = new ArrayList<>();
 
-            return ResponseEntity.ok(activities);
-       //  } catch (IOException e) {
-      //      throw new RuntimeException(e);
-      //  }
+    @GetMapping("/activities")
+    public ResponseEntity<List<ActivityListing>> activities(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int skip, @RequestParam(defaultValue = "10") int limit) {
+        var activities = this.activityService.getActivities(keyword, limit, skip);
+
+        return ResponseEntity.ok(activities);
     }
 }
