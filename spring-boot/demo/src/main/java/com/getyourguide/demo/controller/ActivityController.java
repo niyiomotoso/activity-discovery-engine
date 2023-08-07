@@ -25,6 +25,9 @@ public class ActivityController {
         return ResponseEntity.ok(Constants.WELCOME);
     }
 
+    /* Api endpoint to query the repository depending on the searched Keyword and pagination parameter such as search limit
+    and record count to skip
+    * */
     @GetMapping("/activities")
     public ResponseEntity<List<ActivityListing>> activities(@RequestParam(defaultValue = "") String keyword, @RequestParam(defaultValue = "0") int skip, @RequestParam(defaultValue = "12") int limit) {
         var activities = this.activityService.getActivities(keyword, limit, skip);

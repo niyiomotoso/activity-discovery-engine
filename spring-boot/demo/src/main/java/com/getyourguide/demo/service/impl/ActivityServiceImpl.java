@@ -17,6 +17,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
     @Override
     public List<ActivityListing> getActivities(String keyword, int limit, int skip) {
+        // check if a particular keyword is needed in the result and redirect the appropriate method
         if (keyword.equals("")) {
             return this.activityRepository.getActivities(limit, skip);
         } else {

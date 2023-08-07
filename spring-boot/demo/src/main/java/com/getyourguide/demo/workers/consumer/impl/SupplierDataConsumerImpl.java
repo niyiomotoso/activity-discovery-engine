@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+ * An implementation of SupplierDataConsumer abstraction.
+ * */
 @Service
 public class SupplierDataConsumerImpl implements SupplierDataConsumer {
     private SupplierService supplierService;

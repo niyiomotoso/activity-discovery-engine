@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+ * An implementation of ActivityDataConsumer abstraction.
+ * */
 @Service
 public class ActivityDataConsumerImpl implements ActivityDataConsumer {
     private ActivityService activityService;

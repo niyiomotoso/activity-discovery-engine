@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/*
+ * The file publisher implementation of DataPublisher abstraction.
+ * */
 @Service
 public class FileDataPublisher implements DataPublisher {
 
