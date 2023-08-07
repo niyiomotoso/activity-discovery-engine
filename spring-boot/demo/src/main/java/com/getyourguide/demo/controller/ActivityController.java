@@ -21,8 +21,8 @@ public class ActivityController {
     }
 
     @GetMapping("/")
-    public String home() {
-        return Constants.WELCOME;
+    public ResponseEntity<String> home() {
+        return ResponseEntity.ok(Constants.WELCOME);
     }
 
     @GetMapping("/activities")

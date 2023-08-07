@@ -4,6 +4,15 @@ export default {
     props: {
         activities: [],
     },
+    methods: {
+      specialOffer(specialOffer) {
+        if (specialOffer) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+      }
+    }
 };
 
 </script>
@@ -18,8 +27,9 @@ export default {
                 <h3>{{ activity.title }}</h3>
                 <p>Price: {{ activity.currency }}{{ activity.price }}</p>
                 <p>Rating: {{ activity.rating }}</p>
-                <p>Supplier: {{ activity.supplierName }}</p>
+                <p>Has Special Offer: {{ specialOffer(activity.specialOffer) }}</p>
                 <hr>
+                <p>Event By: {{ activity.supplierName }}</p>
             </div>
         </div>
     </div>
