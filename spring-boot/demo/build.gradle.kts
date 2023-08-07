@@ -22,6 +22,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.springframework.boot:spring-boot-starter-web")
     implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+    testImplementation("junit:junit:4.13.1")
+    testImplementation ("org.mockito:mockito-core:2.21.0")
     runtimeOnly("mysql:mysql-connector-java:5.1.26")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")

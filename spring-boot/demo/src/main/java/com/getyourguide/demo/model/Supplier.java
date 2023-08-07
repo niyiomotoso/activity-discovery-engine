@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
 @EntityListeners(AuditingEntityListener.class)
 public class Supplier {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long Id;
     @Column(name="name", unique = true)
     private String name;

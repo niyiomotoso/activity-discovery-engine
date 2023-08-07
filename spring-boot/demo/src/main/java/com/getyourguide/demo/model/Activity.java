@@ -26,5 +26,5 @@ public class Activity {
     private String currency;
     private double rating;
     private boolean specialOffer;
-    private boolean supplierId;
+    private Long supplierId;
 }

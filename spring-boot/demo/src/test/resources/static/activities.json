@@ -1,0 +1,50 @@
+[
+  {
+    "title": "German Tour: Parliament Quarter & Reichstag glass dome",
+    "price": 14,
+    "currency": "$",
+    "rating": 4.8,
+    "specialOffer": false,
+    "supplierId": 1
+  },
+  {
+    "title": "Skip the Line: Pergamon Museum Berlin Tickets",
+    "price": 21,
+    "currency": "$",
+    "rating": 4.8,
+    "specialOffer": false,
+    "supplierId": 2
+  },
+  {
+    "title": "Berlin WelcomeCard: Transport, Discounts & Guide Book",
+    "price": 10,
+    "currency": "$",
+    "rating": 4.6,
+    "specialOffer": false,
+    "supplierId": 3
+  },
+  {
+    "title": "Skip the Line: Berlin TV Tower Ticket",
+    "price": 143,
+    "currency": "$",
+    "rating": 4.6,
+    "specialOffer": false,
+    "supplierId": 2
+  },
+  {
+    "title": "1-Hour City Tour by Boat with Guaranteed Seating",
+    "price": 14,
+    "currency": "$",
+    "rating": 4.5,
+    "specialOffer": false,
+    "supplierId": 2
+  },
+  {
+    "title": "Skip the Line: Neues Museum Amsterdam Tickets",
+    "price": 46,
+    "currency": "$",
+    "rating": 4.9,
+    "specialOffer": true,
+    "supplierId": 4
+  }
+]
