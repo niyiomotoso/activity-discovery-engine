@@ -1,5 +1,6 @@
 package com.getyourguide.demo.controller;
 
+import com.getyourguide.demo.constants.Constants;
 import com.getyourguide.demo.projections.ActivityListing;
 import com.getyourguide.demo.service.ActivityService;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,11 @@ public class ActivityController {
 
     ActivityController(ActivityService activityService) {
         this.activityService = activityService;
+    }
+
+    @GetMapping("/")
+    public String home() {
+        return Constants.WELCOME;
     }
 
     @GetMapping("/activities")
