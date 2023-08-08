@@ -25,7 +25,6 @@ public class SupplierDataConsumerImpl implements SupplierDataConsumer {
                 // TODO: make exception more granular
                 e.printStackTrace();
             }
-            return false;
         }
 
         return true;

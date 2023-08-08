@@ -25,7 +25,6 @@ public class ActivityDataConsumerImpl implements ActivityDataConsumer {
                 // TODO: make exception more granular
                 e.printStackTrace();
             }
-            return false;
         }
 
         return true;
