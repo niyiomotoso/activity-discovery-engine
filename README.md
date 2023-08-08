@@ -1,49 +1,49 @@
-# Objective
+# System Stack
+Frontend: Framework: Vue.js, Package manager: npm.
 
-## Key Points
 
-- We want to assess your skills as a generalist software engineer.
-- We are looking for people who are able to work on a variety of projects and technologies.
-- We are not explicitly looking for expertise in a specific technology or domain. An ideal candidate would be able to work with a variety of technologies.
+API: Framework: SpringBoot, Package manager: gradle.
 
-We would like you to build a web application that allows users to search for activities.
-The project is meant to be a simple application that you can build in a few hours.
-We are not looking for a production-ready application but we will assess your project both in terms of quality (use of best practices/robust architecture) and potential (scalability).
 
-In this repository you will find a list of activities that you can use to build your application (please find the file `activities.json` in the `resources` folder).
+Database: MySQL.
 
-We bootstrapped in advance 2 skeleton applications for the back end and the front end: you will find a skeleton SpringBoot backend application and a VueJS frontend application.
 
-You can use them to speed up the implementation, or you can start from scratch choosing the technologies you are most familiar with, or you think most appropriate to fulfill the requirements.
+Containerization: Docker.
 
-# Requirements
 
-- You need to provide a backend application meant to expose an API (REST or GraphQL).
-- You need to provide a client application consuming the API exposed by the previous application and implement a UI.
-- The client should display the list of activities to the user and allow the user to search for activities by title by
-  providing an input field.
-  - The fields to be displayed are:
-    - title
-    - price with currency
-    - location
-    - rating
-    - whether it has a special offer or not
-    - the activity's supplier name
-- You need to decide if the filtering logic should be implemented on the client or on the server.
-- Please add instructions on how to run your project locally and notes on your architectural decisions.
-- Please also document any features/improvements you left out in favor of time, preferably with sufficient details on "what, why & how".
+# Installation
+The application is dockerized and composed such that it can be started with a single command.
+Ensure [Docker](https://www.docker.com/) is installed on the machine to successfully run. Start the application with the command below.
+MySQL DB, Springboot and Vue.js application each has it's own container declaration.
 
-# How to submit your work
 
-Please clone this repository and send us a zip file containing your work.
+`docker-compose up`
 
-⚠️ **Make sure not to publish your work on a public repository.** ⚠️
 
-We will grade your project after submission and eventually invite you for a remote live interview with our engineers.
+It takes about 6 minutes for all services to be fully setup depending on the local machine VM resources. To confirm all containers are running:
 
-# Presentation
+# Running the application
+Once the installation is done:
+1. The Springboot API should be live at [localhost:9595](http://localhost:9595)
+2. The Vue.js application should be live at [localhost:8080](http://localhost:8080)
 
-- We will ask you to present your work. Please be prepared to present your work, demo it, and explain your choices.
-- We will ask clarifying questions about your code and your design choices.
-- In addition to the presentation we will ask you to refactor the code, add features, or fix bugs:
-  please be prepared to share your screen during the interview and to code live with us.
+NOTE: The default records are automatically populated into the DB by a scheduler that runs at the start of the application.
+I also provided an endpoint [http://localhost:9595/trigger](http://localhost:9595/trigger)
+that can be used to repopulate the DB incase of new additions.
+
+
+
+
+# Known issue
+If the application is failing to start for some reasons or there is an interruption in the starting process. Run the command below to restart the app installation process
+`docker-compose down && docker-compose up`
+
+
+# Running Tests
+The test is run with a gradle command. To run the test `cd` to `springboot/demo` directory, then run:
+
+`./gradlew test`
+
+
+# Design Note
+The detailed design note is available in Note.pdf in the parent folder.

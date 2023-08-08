@@ -1,6 +1,7 @@
 package com.getyourguide.demo.workers.publisher.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.getyourguide.demo.model.Activity;
 import com.getyourguide.demo.model.Supplier;
@@ -35,10 +36,9 @@ public class FileDataPublisher implements DataPublisher {
             ObjectMapper objectMapper = new ObjectMapper();
             //read JSON file and convert to a list of activities
             var file = resourceLoader.getResource("classpath:static/activities.json").getFile();
-            var activities = objectMapper.readValue(file, new TypeReference<List<Activity>>() {
+            var activities = objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES).readValue(file, new TypeReference<List<Activity>>() {
             });
             this.activityDataConsumer.processActivities(activities);
-
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,7 +53,7 @@ public class FileDataPublisher implements DataPublisher {
             ObjectMapper objectMapper = new ObjectMapper();
             //read JSON file and convert to a list of activities
             var file = resourceLoader.getResource("classpath:static/suppliers.json").getFile();
-            var suppliers = objectMapper.readValue(file, new TypeReference<List<Supplier>>() {
+            var suppliers = objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES).readValue(file, new TypeReference<List<Supplier>>() {
             });
             this.supplierDataConsumer.processSuppliers(suppliers);
 

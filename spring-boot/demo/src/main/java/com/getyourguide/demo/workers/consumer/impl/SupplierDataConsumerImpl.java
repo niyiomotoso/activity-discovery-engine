@@ -19,7 +19,13 @@ public class SupplierDataConsumerImpl implements SupplierDataConsumer {
     @Override
     public boolean processSuppliers(List<Supplier> suppliers) {
         for (Supplier supplier: suppliers) {
-            this.supplierService.create(supplier);
+            try {
+                this.supplierService.create(supplier);
+            } catch (Exception e) {
+                // TODO: make exception more granular
+                e.printStackTrace();
+            }
+            return false;
         }
 
         return true;

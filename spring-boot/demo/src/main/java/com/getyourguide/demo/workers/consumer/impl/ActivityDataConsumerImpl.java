@@ -19,7 +19,13 @@ public class ActivityDataConsumerImpl implements ActivityDataConsumer {
     @Override
     public boolean processActivities(List<Activity> activities) {
         for (Activity activity: activities) {
-            this.activityService.create(activity);
+            try {
+                this.activityService.create(activity);
+            } catch (Exception e) {
+                // TODO: make exception more granular
+                e.printStackTrace();
+            }
+            return false;
         }
 
         return true;

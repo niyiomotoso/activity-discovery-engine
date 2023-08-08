@@ -1,13 +1,11 @@
 package com.getyourguide.demo.unit;
 
-import com.getyourguide.demo.model.Activity;
 import com.getyourguide.demo.projections.ActivityListing;
 import com.getyourguide.demo.repository.ActivityRepository;
 import com.getyourguide.demo.service.ActivityService;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import static org.mockito.Mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,6 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
