@@ -20,8 +20,7 @@ MySQL DB, Springboot and Vue.js application each has it's own container declarat
 `docker-compose up`
 
 
-It takes about 6 minutes for all services to be fully setup depending on the local machine VM resources. To confirm all containers are running:
-
+It takes about 6 minutes for all services to be fully setup depending on the local machine VM resources. Please ensure all containers are in running state before using the application.
 # Running the application
 Once the installation is done:
 1. The Springboot API should be live at [localhost:9595](http://localhost:9595)
